@@ -1,0 +1,53 @@
+.footer-container {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.footer-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.footer-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+}
+
+.login-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.login-button:hover {
+  background-color: #218838;
+}

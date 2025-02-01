@@ -1,0 +1,79 @@
+<div class="catalogo-container">
+  <h1>Pokédex</h1>
+
+  <!-- Barra de búsqueda -->
+  <div class="search-bar">
+    <input 
+      type="text"   
+      placeholder="Buscar Pokémon..." 
+      [(ngModel)]="searchTerm" 
+      (input)="filterPokemons()" 
+      class="search-input"
+    />
+  </div>
+
+  <!-- Lista de Pokémon filtrados -->
+  <ul class="pokemon-list">
+    <li 
+      *ngFor="let pokemon of paginatedPokemons" 
+      (click)="selectPokemon(pokemon.name)" 
+      class="pokemon-item"
+    >
+      {{ pokemon.name | titlecase }}
+    </li>
+  </ul>
+
+  <!-- Mensaje si no hay resultados -->
+  <div *ngIf="paginatedPokemons.length === 0" class="no-results">
+    No se encontraron Pokémon que coincidan con la búsqueda.
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination" *ngIf="filteredPokemons.length > itemsPerPage">
+    <button (click)="previousPage()" [disabled]="currentPage <= 0" class="pagination-button">
+      Volver atrás
+    </button>
+    <button (click)="nextPage()" [disabled]="!hasMorePokemons()" class="pagination-button">
+      Siguiente 50 Pokémon
+    </button>
+  </div>
+
+  <!-- Botón "Volver atrás" cuando se ve un Pokémon seleccionado -->
+  <div *ngIf="selectedPokemon" class="back-button-container">
+    <button (click)="deselectPokemon()" class="back-button">
+      Volver a la lista
+    </button>
+  </div>
+
+  <!-- Detalles del Pokémon seleccionado -->
+  <div *ngIf="selectedPokemon" class="pokemon-details">
+    <h2>Detalles de {{ selectedPokemon.name | titlecase }}</h2>
+    <p><strong>ID:</strong> {{ selectedPokemon.id }}</p>
+    <p><strong>Altura:</strong> {{ selectedPokemon.height }}</p>
+    <p><strong>Peso:</strong> {{ selectedPokemon.weight }}</p>
+
+    <h3>Habilidades</h3>
+    <ul>
+      <li *ngFor="let ability of selectedPokemon.abilities">
+        {{ ability.ability.name | titlecase }}
+      </li>
+    </ul>
+
+    <h3>Estadísticas Base</h3>
+    <ul>
+      <li *ngFor="let stat of selectedPokemon.stats">
+        <strong>{{ stat.stat.name | titlecase }}:</strong> {{ stat.base_stat }}
+      </li>
+    </ul>
+
+    <h3>Tipo(s)</h3>
+    <ul>
+      <li *ngFor="let type of selectedPokemon.types">
+        {{ type.type.name | titlecase }}
+      </li>
+    </ul>
+
+    <h3>Sprite</h3>
+    <img [src]="selectedPokemon.sprites.front_default" alt="{{ selectedPokemon.name }}">
+  </div>
+</div>

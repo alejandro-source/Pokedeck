@@ -1,0 +1,10 @@
+<div class="noticias-container">
+    <div class="noticia-card" *ngFor="let noticia of noticias">
+      <img [src]="noticia.imagen" [alt]="noticia.titulo" class="noticia-imagen">
+      <div class="noticia-contenido">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.descripcion }}</p>
+        <button (click)="verNoticia(noticia)">Leer más</button>
+      </div>
+    </div>
+  </div>

@@ -1,21 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-footer',
   standalone: false,
-  
   templateUrl: './app-footer.component.html',
-  styleUrl: './app-footer.component.css'
+  styleUrls: ['./app-footer.component.css']
 })
-export class AppFooterComponent {
-  
-  constructor(private router: Router) {} // Inyecta el Router
+export class AppFooterComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
-  register() {
-    this.router.navigate(['/register']); 
+  constructor(private router: Router) {}
+  
+  ngOnInit() {
+    this.isLoggedIn = !!localStorage.getItem('token');
   }
+  
+  register() {
+    this.router.navigate(['/register']);
+  }
+
   login() {
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 }

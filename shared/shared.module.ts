@@ -18,6 +18,7 @@ import { Error404Component } from './error-404/error-404.component';
     RegistrarseComponent,
     LoginComponent,
     Error404Component,
+    
 
   ],
   imports: [
@@ -27,7 +28,7 @@ import { Error404Component } from './error-404/error-404.component';
   ],
   exports: [
     AppHeaderComponent,
-    AppFooterComponent
+    AppFooterComponent,
   ]
 })
 export class SharedModule { }

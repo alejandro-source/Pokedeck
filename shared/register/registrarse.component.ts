@@ -1,41 +1,41 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// FormBuilder --> Sirve para la creacion de formularios reactivos
-// FormGroup --> Sirve para agrupar los controles de un formulario
-// Vadilators --> Porporiona reglas de validacion para los campos del formulario
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registrarse',
   standalone: false,
-  
   templateUrl: './registrarse.component.html',
-  styleUrl: './registrarse.component.css'
+  styleUrls: ['./registrarse.component.css']
 })
 export class RegistrarseComponent {
+  registroForm: FormGroup;
+  registroExiste: boolean = false;
 
-  registroForm: FormGroup; // Variable para el formulario
-  registroExiste: boolean = false; // Variable para verificar si el registro existe
 
-  // Voy a crear el constructor e inicializar el formulario
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient, // Asegúrate de que HttpClient está inyectado
+    private router: Router // Para redirigir después del registro
+  ) {
     this.registroForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
         Validators.minLength(8),
-        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/) // Al menos 1 mayúscula y 1 número
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/) // Contraseña con al menos 1 mayúscula y 1 número
       ]],
       confirmPassword: ['', [Validators.required]]
     }, { validator: this.passwordMatchValidator });
   }
 
-  // Validación de coincidencia de contraseñas
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('confirmPassword')?.value
       ? null : { mismatch: true };
   }
 
-  // Método para obtener los mensajes de error dinámicamente
   getErrorMessage(field: string): string {
     const control = this.registroForm.get(field);
 
@@ -58,15 +58,29 @@ export class RegistrarseComponent {
     return '';
   }
 
-  // Método para enviar el formulario
   onSubmit() {
     if (this.registroForm.valid) {
-      console.log('Formulario enviado con éxito:', this.registroForm.value);
-      this.registroExiste = true; // Muestra el mensaje de éxito
-      this.registroForm.reset(); // Reinicia el formulario
+      const formData = this.registroForm.value;
+
+      // Haciendo la petición POST al backend
+      this.http.post('http://localhost:3000/api/registro', formData)
+        .subscribe(
+          (response) => {
+            console.log('Usuario registrado con éxito:', response);
+            this.registroExiste = true; // Puedes mostrar un mensaje de éxito
+            this.registroForm.reset(); // Resetear el formulario
+            this.router.navigate(['/login']); // Redirige a la página de login si lo deseas
+          },
+          (error) => {
+            console.error('Error al registrar el usuario:', error);
+            // Aquí podrías manejar el error si hay problemas con la petición
+          }
+        );
     } else {
       console.log('Formulario inválido');
     }
   }
 }
+
+// http://localhost:3000/api/usuarios --> para ver los usuarios
 

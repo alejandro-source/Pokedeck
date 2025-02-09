@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ServiceService } from '../..//services/pokemon.service'; 
 
 @Component({
   selector: 'app-catalogo-de-pokemons',
@@ -8,59 +8,63 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./catalogo-de-pokemons.component.css']
 })
 export class CatalogoDePokemonsComponent implements OnInit {
-  pokemons: any[] = [];
-  filteredPokemons: any[] = [];
-  paginatedPokemons: any[] = [];
+  pokemons: any[] = []; 
+  filteredPokemons: any[] = []; 
+  paginatedPokemons: any[] = []; 
   selectedPokemon: any = null;
-
   searchTerm: string = '';
-  itemsPerPage: number = 50; // Mostrar 50 Pokémon por página
-  currentPage: number = 0;
 
-  constructor(private http: HttpClient) {}
+  itemsPerPage: number = 50; 
+  currentPage: number = 0;    
+
+  constructor(private service: ServiceService) {} 
 
   ngOnInit(): void {
     this.loadPokemons();
   }
 
-  // Cargar solo los primeros 500 Pokémon desde la API
+  // Cargar los Pokémon usando el servicio
   loadPokemons(): void {
-    this.http.get('https://pokeapi.co/api/v2/pokemon?limit=500').subscribe((response: any) => {
-      this.pokemons = response.results;
-      this.filteredPokemons = [...this.pokemons]; // Filtrados inicialmente igual que los originales
-      this.updatePagination();
-    });
+    this.service.getPokemons(1000).subscribe((response: any) => {
+      this.pokemons = response.results.map((pokemon: any, index: number) => ({
+        name: pokemon.name,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
+      }));
+      this.filteredPokemons = [...this.pokemons];
+      this.updatePagination(); 
+    })
   }
 
-  // Filtrar Pokémon por nombre
+  // Filtrar los Pokémon por el término de búsqueda
   filterPokemons(): void {
     const term = this.searchTerm.toLowerCase();
-    this.filteredPokemons = this.pokemons.filter((pokemon) => 
-      pokemon.name.toLowerCase().includes(term)
-    );
-    this.currentPage = 0; // Reiniciar a la primera página
+    if (term.length > 0) {
+      this.filteredPokemons = this.pokemons.filter(pokemon => pokemon.name.includes(term));
+    } else {
+      this.filteredPokemons = [...this.pokemons];
+    }
+    this.currentPage = 0; 
     this.updatePagination();
   }
 
-  // Actualizar la lista paginada
+  // Actualizar la lista de Pokémon para la página actual
   updatePagination(): void {
-    const start = this.currentPage * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.paginatedPokemons = this.filteredPokemons.slice(start, end);
+    const startIndex = this.currentPage * this.itemsPerPage;
+    this.paginatedPokemons = this.filteredPokemons.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  // Mover a la siguiente página
-  nextPage(): void {
-    if (this.hasMorePokemons()) {
-      this.currentPage++;
+  // Ir a la página anterior
+  previousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
       this.updatePagination();
     }
   }
 
-  // Mover a la página anterior
-  previousPage(): void {
-    if (this.currentPage > 0) {
-      this.currentPage--;
+  // Ir a la siguiente página
+  nextPage(): void {
+    if (this.hasMorePokemons()) {
+      this.currentPage++;
       this.updatePagination();
     }
   }
@@ -70,9 +74,9 @@ export class CatalogoDePokemonsComponent implements OnInit {
     return (this.currentPage + 1) * this.itemsPerPage < this.filteredPokemons.length;
   }
 
-  // Seleccionar un Pokémon y cargar sus detalles
+  // Seleccionar un Pokémon y mostrar sus detalles
   selectPokemon(name: string): void {
-    this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`).subscribe((response: any) => {
+    this.service.getPokemonDetails(name).subscribe((response: any) => {
       this.selectedPokemon = response;
     });
   }
@@ -81,5 +85,4 @@ export class CatalogoDePokemonsComponent implements OnInit {
   deselectPokemon(): void {
     this.selectedPokemon = null;
   }
-  
 }

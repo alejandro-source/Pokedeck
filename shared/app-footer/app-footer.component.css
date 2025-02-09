@@ -1,53 +1,108 @@
+/* Estilo para el footer */
 .footer-container {
-  width: 100%;
-  background-color: #f4f4f4;
+  width: 97.3%;
+  background-color: #ffdb00; /* Fondo amarillo tipo Pokémon */
   padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-top: 4px solid #ff6f00; /* Línea naranja en la parte superior */
 }
 
+/* Contenedor del contenido del footer */
 .footer-content {
   text-align: center;
-  max-width: 600px;
+  max-width: 800px; /* Ancho máximo */
+  width: 100%;
 }
 
+/* Texto del footer */
 .footer-text {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #333;
   margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
 }
 
+/* Contenedor de los botones */
 .footer-buttons {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Espaciado entre botones */
   justify-content: center;
 }
 
-.footer-button {
-  padding: 12px 20px;
-  font-size: 1rem;
+/* Estilo base para los botones */
+.footer-buttons button {
+  padding: 14px 30px;
+  font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px; /* Bordes redondeados */
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.register-button {
-  background-color: #007bff;
+/* Botón de registro */
+.footer-buttons button:first-child {
+  background-color: #ff6f00; /* Naranja vibrante */
   color: white;
 }
 
-.register-button:hover {
-  background-color: #0056b3;
+.footer-buttons button:first-child:hover {
+  background-color: #ff9100; /* Naranja más oscuro */
+  transform: scale(1.05); /* Efecto de elevación */
 }
 
-.login-button {
-  background-color: #28a745;
+.footer-buttons button:first-child:focus {
+  outline: 3px solid #ff6f00; /* Resaltar el foco */
+}
+
+/* Botón de inicio de sesión */
+.footer-buttons button:last-child {
+  background-color: #007bff; /* Azul fuerte */
   color: white;
 }
 
-.login-button:hover {
-  background-color: #218838;
+.footer-buttons button:last-child:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+  transform: scale(1.05);
+}
+
+.footer-buttons button:last-child:focus {
+  outline: 3px solid #007bff; /* Resaltar el foco */
+}
+
+/* Responsividad para tablets */
+@media (max-width: 768px) {
+  .footer-text {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .footer-buttons {
+    gap: 10px;
+  }
+
+  .footer-buttons button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Responsividad para móviles */
+@media (max-width: 480px) {
+  .footer-text {
+    font-size: 1rem;
+  }
+
+  .footer-buttons button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
 }

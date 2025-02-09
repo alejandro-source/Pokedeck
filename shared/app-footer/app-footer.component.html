@@ -2,8 +2,8 @@
   <div class="footer-content">
     <p class="footer-text">¿Quieres formar parte de nuestra comunidad?</p>
     <div class="footer-buttons">
-      <button class="footer-button register-button" (click)="register()">Registrarse</button>
-      <button class="footer-button login-button" (click)="login()">Iniciar sesión</button>
+      <button *ngIf="!isLoggedIn" (click)="register()">Registrarse</button>
+      <button *ngIf="!isLoggedIn" (click)="login()">Iniciar sesión</button>
     </div>
   </div>
 </footer>

@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     
+    
 
   ],
   imports: [
@@ -19,7 +20,6 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AplicacionModule,
     HttpClientModule,
-    AplicacionModule,
     SharedModule
 
   ],

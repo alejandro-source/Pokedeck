@@ -1,97 +1,279 @@
+/* Fuentes inspiradas en un estilo más juguetón */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-.header {
-  background-color: #ffffff;
-  border-bottom: 2px solid #e0e0e0;
-  padding: 20px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
-}
-
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  width: 100%; 
-  margin: 0 auto;
-  padding: 0 15px; 
-}
-
-
-.logo img {
-  width: 80px;
-  height: auto; 
-}
-
-
-.nav-menu ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.nav-menu li {
-  text-align: center;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f1f1f1;  /* Fondo claro para no ser muy oscuro */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Estilo para el header */
+.header {
+  background-color: #ffcb05;  /* Color amarillo Pokémon */
+  border-bottom: 2px solid #ff6f00;  /* Borde naranja oscuro */
+  padding: 20px 0;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal del header */
+/* Contenedor principal del header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-shrink: 0; /* Evita que el header se reduzca */
 }
 
 
-.nav-menu a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  font-weight: bold;
+
+/* Banner dentro del header */
+.banner img {
+  width: 130px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo img {
+  width: 180px;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Estilos del menú de navegación */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff6f00;  /* Naranja Pokémon para que combine con el tema */
+  border-radius: 25px;
+  padding: 8px 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra para darle más profundidad */
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto de degradado para la barra de navegación */
+.nav-menu {
+  background: linear-gradient(90deg, #ffcb05 0%, #ff6f00 100%);  /* Degradado de amarillo a naranja */
+}
+
+/* Estilo para los enlaces de navegación */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+}
+
+.nav-menu li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: color 0.3s ease, transform 0.2s ease; 
-  padding: 5px 0; 
 }
 
+.nav-menu a {
+  text-decoration: none;
+  color: #fff;  /* Color blanco para que resalten sobre el fondo */
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
 
+/* Efecto al pasar el ratón (hover) */
 .nav-menu a:hover {
-  color: #007bff;
-  transform: translateY(-3px); 
+  color: #ff6f00;  /* Color del texto cambia a naranja */
+  background-color: #fff;  /* Fondo blanco para un buen contraste */
+  transform: translateY(-5px);
 }
 
-
+/* Iconos de la barra de navegación */
 .nav-menu img {
-  width: 50px; 
+  width: 50px;
   height: 50px;
   margin-bottom: 5px;
-  object-fit: cover; 
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-
-.banner img {
-  width: 150px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+.nav-menu img:hover {
+  transform: scale(1.2);
 }
 
-
+/* Responsividad para dispositivos más pequeños */
 @media (max-width: 768px) {
-
-  .nav-menu ul {
-    gap: 20px; 
+  .banner img {
+    width: 100px;
   }
 
   .logo img {
-    width: 60px; 
+    width: 150px;
   }
 
   .nav-menu a {
-    font-size: 12px; 
+    font-size: 14px;
   }
 
   .nav-menu img {
-    width: 45px; 
+    width: 45px;
     height: 45px;
   }
 
   .header-container {
-    padding: 0 10px; 
+    padding: 0 15px;
   }
+}
+
+/* Mejorar experiencia en dispositivos móviles */
+@media (max-width: 480px) {
+  .nav-menu ul {
+    gap: 20px;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+  }
+
+  .nav-menu img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .banner img {
+    width: 90px;
+  }
+}
+
+/* Foco visual accesible */
+.nav-menu a:focus,
+.nav-menu img:focus {
+  outline: 3px solid #ff6f00;
+  outline-offset: 2px;
+}
+
+/* Estilo para el menú del avatar de usuario */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 80px;  
+  height: 80px;  
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dcdcdc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.2s ease, border 0.3s ease;
+}
+
+/* Avatar de usuario con borde remarcado cuando está logueado */
+.user-avatar.logged-in {
+  border: 2px solid #ff6f00;  /* Borde naranja para cuando el usuario está logueado */
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.4); /* Sombra suave en naranja */
+}
+
+/* Opciones del menú de usuario */
+.user-options {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 160px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.user-menu:hover .user-options {
+  display: block;
+  opacity: 1;
+}
+
+.user-options a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.user-options a:hover {
+  background-color: #f1f1f1;
+  color: #ff6f00;
+}
+
+/* Estilo adicional para el dropdown del menú */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: #ff6f00;
+  font-size: 14px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.dropdown-menu button:hover {
+  color: #e65100;
+  text-decoration: underline;
 }

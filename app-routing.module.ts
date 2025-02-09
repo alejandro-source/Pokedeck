@@ -7,14 +7,15 @@ import { NewsComponent } from './aplicacion/components/news/news.component';
 import { EventsComponent } from './aplicacion/components/events/events.component';
 import { LoginComponent } from './shared/login/login.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
-  { path: 'pokedex', component: CatalogoDePokemonsComponent },
-  { path: 'news', component: NewsComponent }, 
-  { path: 'events', component: EventsComponent },  
-  { path: 'register', component: RegistrarseComponent }, 
-  { path: 'login', component: LoginComponent }, 
-  { path: '**', redirectTo: '' }, 
+  { path: 'pokedex', component: CatalogoDePokemonsComponent}, // Ruta protegida
+  { path: 'news', component: NewsComponent }, // Ruta protegida
+  { path: 'events', component: EventsComponent}, // Ruta protegida
+  { path: 'register', component: RegistrarseComponent}, // Esta no está protegida, el usuario puede acceder sin token
+  { path: 'login', component: LoginComponent }, // Esta tampoco está protegida, permite el acceso si el usuario no tiene token
+  { path: '**', redirectTo: '' }, // Redirige a Home si la ruta no es encontrada
 ];
 
 @NgModule({

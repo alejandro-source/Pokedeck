@@ -1,31 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body, html {
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffcc00, #ff0000);
+  background: linear-gradient(135deg, #ffcc00, #ff6f00);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   font-family: 'Press Start 2P', cursive;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor de Registro */
 .registro-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
+  background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW1xNThvbzJ6OXdqZmdyZDY3OTB2bnJlZThpbmtuYWh0Y3FzdnNwYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bjonANbDZdPyv5eFqM/giphy.gif'); /* Nuevo enlace del GIF */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
+@keyframes backgroundAnim {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: center;
+  }
+}
+
+.registro-container {
+  animation: backgroundAnim 10s ease-in-out infinite;
+}
+
+/* Estilo de la tarjeta de registro */
 .registro-card {
   width: 380px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   padding: 25px;
   border-radius: 15px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   border: 4px solid #3b4cca;
+  position: relative;
 }
 
 .logo {
@@ -102,7 +137,6 @@ button:hover:not(:disabled) {
   box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.6);
 }
 
-/* Animación */
 @keyframes fadeIn {
   from {
     opacity: 0;

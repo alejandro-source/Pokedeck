@@ -12,13 +12,14 @@
     />
   </div>
 
-  <!-- Lista de Pokémon filtrados -->
+  <!-- Lista de Pokémon (nombre + imagen) -->
   <ul class="pokemon-list">
     <li 
       *ngFor="let pokemon of paginatedPokemons" 
       (click)="selectPokemon(pokemon.name)" 
       class="pokemon-item"
     >
+      <img [src]="pokemon.image" alt="{{ pokemon.name }}">
       {{ pokemon.name | titlecase }}
     </li>
   </ul>
@@ -28,15 +29,19 @@
     No se encontraron Pokémon que coincidan con la búsqueda.
   </div>
 
-  <!-- Paginación -->
-  <div class="pagination" *ngIf="filteredPokemons.length > itemsPerPage">
-    <button (click)="previousPage()" [disabled]="currentPage <= 0" class="pagination-button">
-      Volver atrás
-    </button>
-    <button (click)="nextPage()" [disabled]="!hasMorePokemons()" class="pagination-button">
-      Siguiente 50 Pokémon
-    </button>
-  </div>
+
+ <!-- Paginación -->
+<div class="pagination" *ngIf="filteredPokemons.length > itemsPerPage">
+  <button (click)="previousPage()" [disabled]="currentPage <= 0" class="pagination-button previous">
+    <span class="button-text">Anterior</span>
+
+  </button>
+  <button (click)="nextPage()" [disabled]="!hasMorePokemons()" class="pagination-button next">
+    <span class="button-text">Siguiente</span>
+    
+  </button>
+</div>
+
 
   <!-- Botón "Volver atrás" cuando se ve un Pokémon seleccionado -->
   <div *ngIf="selectedPokemon" class="back-button-container">
@@ -73,7 +78,9 @@
       </li>
     </ul>
 
-    <h3>Sprite</h3>
+    <h3>Imagen</h3>
     <img [src]="selectedPokemon.sprites.front_default" alt="{{ selectedPokemon.name }}">
   </div>
 </div>
+
+

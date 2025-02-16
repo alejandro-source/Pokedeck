@@ -14,7 +14,7 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
  
   // URL de la API para el login
-  private apiUrl = 'http://localhost:3000/api/login';
+  private apiUrl = 'https://pokedeckfinal.onrender.com/api/login';  // Actualiza la URL con la dirección de Render
 
    /**
    * Constructor del servicio AuthService.
@@ -33,7 +33,7 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { email, password })
       .pipe(
-        catchError(this.handleError)  
+        catchError(this.handleError)  // Manejamos cualquier error de la solicitud
       );
   }
 

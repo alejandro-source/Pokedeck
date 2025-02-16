@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
  * Este componente permite a los usuarios registrarse proporcionando su nombre, correo electrónico, contraseña y confirmación de contraseña.
  * Realiza validaciones en los campos y maneja la solicitud al backend para crear un nuevo usuario.
  */
-
 @Component({
   selector: 'app-registrarse',
   standalone: false,
@@ -36,7 +35,6 @@ export class RegistrarseComponent {
    * @param http Instancia del servicio HttpClient para hacer solicitudes HTTP al backend.
    * @param router Instancia del servicio Router para redirigir después del registro.
    */
-
   constructor(
     private fb: FormBuilder,
     private http: HttpClient, 
@@ -60,7 +58,6 @@ export class RegistrarseComponent {
    * @param form El formulario que se va a validar.
    * @returns Un objeto de error con la clave 'mismatch' si las contraseñas no coinciden, o null si son iguales.
    */
-
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('confirmPassword')?.value ? null : { mismatch: true };
   }
@@ -70,7 +67,6 @@ export class RegistrarseComponent {
    * @param field El nombre del campo que se desea obtener el mensaje de error.
    * @returns El mensaje de error asociado al campo.
    */
-  
   getErrorMessage(field: string): string {
     const control = this.registroForm.get(field);
 
@@ -99,22 +95,30 @@ export class RegistrarseComponent {
    * Si el registro es exitoso, redirige al usuario a la página de inicio de sesión.
    * @returns void
    */
-
   onSubmit() {
     if (this.registroForm.valid) {
       const formData = this.registroForm.value;
 
-      // Haciendo la petición POST al backend
-      this.http.post('http://localhost:3000/api/registro', formData)
+      // URL de tu API desplegada en Render
+      const apiUrl = 'https://pokedeckfinal.onrender.com/api/registro';  // URL de la API desplegada
+
+      // Haciendo la petición POST al backend usando la URL de producción (Render)
+      this.http.post(apiUrl, formData)
         .subscribe(
           (response) => {
             console.log('Usuario registrado con éxito:', response);
             this.registroExiste = true; 
             this.registroForm.reset();
-            this.router.navigate(['/login']); 
+            this.router.navigate(['/login']); // Redirige al login después del registro
           },
           (error) => {
             console.error('Error al registrar el usuario:', error);
+            if (error.status === 400) {
+              // Error cuando el correo ya está registrado
+              alert('El correo electrónico ya está registrado.');
+            } else {
+              alert('Ocurrió un error, por favor intente de nuevo.');
+            }
           }
         );
     } else {
@@ -122,5 +126,3 @@ export class RegistrarseComponent {
     }
   }
 }
-
-

@@ -245,7 +245,7 @@ Realiza validaciones en los campos y maneja la solicitud al backend para crear u
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/register/registrarse.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/register/registrarse.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -352,8 +352,8 @@ Inicializa el formulario con los campos &#39;nombre&#39;, &#39;email&#39;, &#39;
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -427,8 +427,8 @@ Inicializa el formulario con los campos &#39;nombre&#39;, &#39;email&#39;, &#39;
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="103"
-                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:103</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -472,8 +472,8 @@ Si el registro es exitoso, redirige al usuario a la página de inicio de sesión
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/shared/register/registrarse.component.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -557,7 +557,7 @@ Si el registro es exitoso, redirige al usuario a la página de inicio de sesión
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/register/registrarse.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/register/registrarse.component.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -589,7 +589,7 @@ Si el registro es exitoso, redirige al usuario a la página de inicio de sesión
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/register/registrarse.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/register/registrarse.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -619,7 +619,6 @@ import { Router } from &#x27;@angular/router&#x27;;
  * Este componente permite a los usuarios registrarse proporcionando su nombre, correo electrónico, contraseña y confirmación de contraseña.
  * Realiza validaciones en los campos y maneja la solicitud al backend para crear un nuevo usuario.
  */
-
 @Component({
   selector: &#x27;app-registrarse&#x27;,
   standalone: false,
@@ -647,7 +646,6 @@ export class RegistrarseComponent {
    * @param http Instancia del servicio HttpClient para hacer solicitudes HTTP al backend.
    * @param router Instancia del servicio Router para redirigir después del registro.
    */
-
   constructor(
     private fb: FormBuilder,
     private http: HttpClient, 
@@ -671,7 +669,6 @@ export class RegistrarseComponent {
    * @param form El formulario que se va a validar.
    * @returns Un objeto de error con la clave &#x27;mismatch&#x27; si las contraseñas no coinciden, o null si son iguales.
    */
-
   passwordMatchValidator(form: FormGroup) {
     return form.get(&#x27;password&#x27;)?.value &#x3D;&#x3D;&#x3D; form.get(&#x27;confirmPassword&#x27;)?.value ? null : { mismatch: true };
   }
@@ -681,7 +678,6 @@ export class RegistrarseComponent {
    * @param field El nombre del campo que se desea obtener el mensaje de error.
    * @returns El mensaje de error asociado al campo.
    */
-  
   getErrorMessage(field: string): string {
     const control &#x3D; this.registroForm.get(field);
 
@@ -710,22 +706,30 @@ export class RegistrarseComponent {
    * Si el registro es exitoso, redirige al usuario a la página de inicio de sesión.
    * @returns void
    */
-
   onSubmit() {
     if (this.registroForm.valid) {
       const formData &#x3D; this.registroForm.value;
 
-      // Haciendo la petición POST al backend
-      this.http.post(&#x27;http://localhost:3000/api/registro&#x27;, formData)
+      // URL de tu API desplegada en Render
+      const apiUrl &#x3D; &#x27;https://pokedeckfinal.onrender.com/api/registro&#x27;;  // URL de la API desplegada
+
+      // Haciendo la petición POST al backend usando la URL de producción (Render)
+      this.http.post(apiUrl, formData)
         .subscribe(
           (response) &#x3D;&gt; {
             console.log(&#x27;Usuario registrado con éxito:&#x27;, response);
             this.registroExiste &#x3D; true; 
             this.registroForm.reset();
-            this.router.navigate([&#x27;/login&#x27;]); 
+            this.router.navigate([&#x27;/login&#x27;]); // Redirige al login después del registro
           },
           (error) &#x3D;&gt; {
             console.error(&#x27;Error al registrar el usuario:&#x27;, error);
+            if (error.status &#x3D;&#x3D;&#x3D; 400) {
+              // Error cuando el correo ya está registrado
+              alert(&#x27;El correo electrónico ya está registrado.&#x27;);
+            } else {
+              alert(&#x27;Ocurrió un error, por favor intente de nuevo.&#x27;);
+            }
           }
         );
     } else {
@@ -733,8 +737,6 @@ export class RegistrarseComponent {
     }
   }
 }
-
-
 </code></pre>
     </div>
 

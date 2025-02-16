@@ -744,7 +744,7 @@ Elimina los datos de sesión para cerrar la sesión del usuario.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:3000/api/login&#x27;</code>
+                        <i>Default value : </i><code>&#x27;https://pokedeckfinal.onrender.com/api/login&#x27;</code>
                     </td>
                 </tr>
                     <tr>
@@ -778,7 +778,7 @@ import { catchError } from &#x27;rxjs/operators&#x27;;
 export class AuthService {
  
   // URL de la API para el login
-  private apiUrl &#x3D; &#x27;http://localhost:3000/api/login&#x27;;
+  private apiUrl &#x3D; &#x27;https://pokedeckfinal.onrender.com/api/login&#x27;;  // Actualiza la URL con la dirección de Render
 
    /**
    * Constructor del servicio AuthService.
@@ -797,7 +797,7 @@ export class AuthService {
   login(email: string, password: string): Observable&lt;any&gt; {
     return this.http.post&lt;any&gt;(this.apiUrl, { email, password })
       .pipe(
-        catchError(this.handleError)  
+        catchError(this.handleError)  // Manejamos cualquier error de la solicitud
       );
   }
 

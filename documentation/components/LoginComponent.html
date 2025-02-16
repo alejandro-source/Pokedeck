@@ -238,7 +238,7 @@ Este componente permite a los usuarios autenticarse mediante su correo electrón
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/login/login.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/login/login.component.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -345,8 +345,8 @@ Inicializa el formulario de inicio de sesión con validaciones.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/app/shared/login/login.component.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/shared/login/login.component.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -397,7 +397,7 @@ Si hay un error, muestra un mensaje de error.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/login/login.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/login/login.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -429,7 +429,7 @@ Si hay un error, muestra un mensaje de error.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/login/login.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/login/login.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -458,7 +458,6 @@ import { Router } from &#x27;@angular/router&#x27;;
  * Componente de inicio de sesión de la aplicación.
  * Este componente permite a los usuarios autenticarse mediante su correo electrónico y contraseña.
  */
-
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: false,
@@ -471,35 +470,31 @@ export class LoginComponent {
    * Formulario reactivo para el inicio de sesión.
    * Contiene los campos &#x27;email&#x27; y &#x27;password&#x27; con validaciones.
    */
-
   loginForm: FormGroup;
 
-   /**
+  /**
    * Mensaje de error que se muestra si las credenciales son incorrectas.
    */
+  loginError: string &#x3D; &#x27;&#x27;;
 
-   loginError: string &#x3D; &#x27;&#x27;;
-
-    /**
+  /**
    * Constructor del componente.
    * Inicializa el formulario de inicio de sesión con validaciones.
    * @param fb Instancia del servicio FormBuilder para construir el formulario.
    * @param http Instancia del servicio HttpClient para hacer solicitudes HTTP.
    * @param router Instancia del servicio Router para navegar entre rutas.
    */
-
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router ){
     
-      // Inicializar el formulario con los campos email y password
+    // Inicializar el formulario con los campos email y password
     this.loginForm &#x3D; this.fb.group({
       email: [&#x27;&#x27;, [Validators.required, Validators.email]], // Valida que sea un correo electrónico válido
       password: [&#x27;&#x27;, [Validators.required, Validators.minLength(8)]] // Valida que la contraseña tenga al menos 8 caracteres
     });
   }
-
 
   /**
    * Maneja el envío del formulario de inicio de sesión.
@@ -507,18 +502,17 @@ export class LoginComponent {
    * Si la autenticación es exitosa, guarda el token en el localStorage y redirige a la página de inicio.
    * Si hay un error, muestra un mensaje de error.
    */
-
   onSubmit() {
     if (this.loginForm.valid) {
       const formData &#x3D; this.loginForm.value;
 
-      // Hacer la solicitud POST al backend para login
-      this.http.post&lt;{ token: string }&gt;(&#x27;http://localhost:3000/api/login&#x27;, formData)
+      // Hacer la solicitud POST al backend para login con la URL desplegada en Render
+      this.http.post&lt;{ token: string }&gt;(&#x27;https://pokedeckfinal.onrender.com/api/login&#x27;, formData)
         .subscribe(
           response &#x3D;&gt; {
             // Guardar el token en el localStorage
             localStorage.setItem(&#x27;token&#x27;, response.token);
-            // Redirigir a la página de inicio
+            // Redirigir a la página de inicio (dashboard) después de login exitoso
             this.router.navigate([&#x27;/dashboard&#x27;]);
           },
           error &#x3D;&gt; {

@@ -25,6 +25,7 @@
           "options": {
             "outputPath": "dist/poke-deck",
             "index": "src/index.html",
+            "baseHref": "/poke-deck/",  
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

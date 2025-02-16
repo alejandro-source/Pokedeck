@@ -1,0 +1,11 @@
+<div class="noticias-container">
+    <!-- Recorre la lista de noticias, y muestra de esas noticias el título, imágen y la descripción --> 
+    <div class="noticia-card" *ngFor="let noticia of noticias">
+      <img [src]="noticia.imagen" [alt]="noticia.titulo" class="noticia-imagen">
+      <div class="noticia-contenido">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.descripcion }}</p>
+      </div>
+    </div>
+  </div> 
+  

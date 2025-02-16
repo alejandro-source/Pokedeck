@@ -1,0 +1,1625 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>poke-deck documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">poke-deck documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CatalogoDePokemonsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar el catálogo de Pokémons.
+Permite la búsqueda, paginación y podemos ver los detalles de un Pokémon seleccionado.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-catalogo-de-pokemons</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./catalogo-de-pokemons.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./catalogo-de-pokemons.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentPage" >currentPage</a>
+                            </li>
+                            <li>
+                                <a href="#filteredPokemons" >filteredPokemons</a>
+                            </li>
+                            <li>
+                                <a href="#itemsPerPage" >itemsPerPage</a>
+                            </li>
+                            <li>
+                                <a href="#paginatedPokemons" >paginatedPokemons</a>
+                            </li>
+                            <li>
+                                <a href="#pokemons" >pokemons</a>
+                            </li>
+                            <li>
+                                <a href="#searchTerm" >searchTerm</a>
+                            </li>
+                            <li>
+                                <a href="#selectedPokemon" >selectedPokemon</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deselectPokemon" >deselectPokemon</a>
+                            </li>
+                            <li>
+                                <a href="#filterPokemons" >filterPokemons</a>
+                            </li>
+                            <li>
+                                <a href="#hasMorePokemons" >hasMorePokemons</a>
+                            </li>
+                            <li>
+                                <a href="#loadPokemons" >loadPokemons</a>
+                            </li>
+                            <li>
+                                <a href="#nextPage" >nextPage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#previousPage" >previousPage</a>
+                            </li>
+                            <li>
+                                <a href="#selectPokemon" >selectPokemon</a>
+                            </li>
+                            <li>
+                                <a href="#updatePagination" >updatePagination</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(service: <a href="../injectables/ServiceService.html" target="_self">ServiceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Inyectamos el servicio.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ServiceService.html" target="_self" >ServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para obtener datos de Pokémons.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deselectPokemon"></a>
+                    <span class="name">
+                        <span ><b>deselectPokemon</b></span>
+                        <a href="#deselectPokemon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deselectPokemon()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Deselecciona el Pokémon actualmente seleccionado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterPokemons"></a>
+                    <span class="name">
+                        <span ><b>filterPokemons</b></span>
+                        <a href="#filterPokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterPokemons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Filtra la lista de Pokémons según el término de búsqueda.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasMorePokemons"></a>
+                    <span class="name">
+                        <span ><b>hasMorePokemons</b></span>
+                        <a href="#hasMorePokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasMorePokemons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si hay más Pokémons disponibles para paginar.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si hay más Pokémons, <code>false</code> en caso contrario.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadPokemons"></a>
+                    <span class="name">
+                        <span ><b>loadPokemons</b></span>
+                        <a href="#loadPokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadPokemons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista de Pokémons desde el servicio.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextPage"></a>
+                    <span class="name">
+                        <span ><b>nextPage</b></span>
+                        <a href="#nextPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nextPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Muestra la página siguiente de Pokémons.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialización del componente.
+Se ejecuta cuando el componente es cargado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="previousPage"></a>
+                    <span class="name">
+                        <span ><b>previousPage</b></span>
+                        <a href="#previousPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>previousPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Muestra la página anterior de Pokémons.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectPokemon"></a>
+                    <span class="name">
+                        <span ><b>selectPokemon</b></span>
+                        <a href="#selectPokemon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectPokemon(name: <a href="../undefineds/r.html" target="_self">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene los detalles de un Pokémon seleccionado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/functions.html#r" target="_self" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre del Pokémon seleccionado.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePagination"></a>
+                    <span class="name">
+                        <span ><b>updatePagination</b></span>
+                        <a href="#updatePagination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePagination()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza la lista paginada de Pokémons.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/functions.html#o" target="_self" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentPage"></a>
+                    <span class="name">
+                        <span ><b>currentPage</b></span>
+                        <a href="#currentPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Página actual en la que nos encontramos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredPokemons"></a>
+                    <span class="name">
+                        <span ><b>filteredPokemons</b></span>
+                        <a href="#filteredPokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/functions.html#a" target="_self" >any[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista filtrada de Pokémons según la búsqueda del usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemsPerPage"></a>
+                    <span class="name">
+                        <span ><b>itemsPerPage</b></span>
+                        <a href="#itemsPerPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>50</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Número de Pokémons que se mostrarán por página.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginatedPokemons"></a>
+                    <span class="name">
+                        <span ><b>paginatedPokemons</b></span>
+                        <a href="#paginatedPokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/functions.html#a" target="_self" >any[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de Pokémons en la pagina en la que estemos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pokemons"></a>
+                    <span class="name">
+                        <span ><b>pokemons</b></span>
+                        <a href="#pokemons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/functions.html#a" target="_self" >any[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de todos los Pokémons obtenidos de la API.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchTerm"></a>
+                    <span class="name">
+                        <span ><b>searchTerm</b></span>
+                        <a href="#searchTerm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/functions.html#r" target="_self" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Término de búsqueda introducido por el usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedPokemon"></a>
+                    <span class="name">
+                        <span ><b>selectedPokemon</b></span>
+                        <a href="#selectedPokemon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/functions.html#a" target="_self" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/aplicacion/components/pokedex/catalogo-de-pokemons.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Si seleccionamos un Pokémon mostraremos más detalles de dicho Pokémon seleccionado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ServiceService } from &#x27;../..//services/pokemon.service&#x27;; 
+
+/**
+ * Componente para mostrar el catálogo de Pokémons.
+ * Permite la búsqueda, paginación y podemos ver los detalles de un Pokémon seleccionado.
+ */
+
+@Component({
+  selector: &#x27;app-catalogo-de-pokemons&#x27;,
+  standalone: false,
+  templateUrl: &#x27;./catalogo-de-pokemons.component.html&#x27;,
+  styleUrls: [&#x27;./catalogo-de-pokemons.component.css&#x27;]
+})
+
+
+export class CatalogoDePokemonsComponent implements OnInit {
+
+  /** Lista de todos los Pokémons obtenidos de la API. */
+  pokemons: any[] &#x3D; []; 
+
+  /** Lista filtrada de Pokémons según la búsqueda del usuario. */
+  filteredPokemons: any[] &#x3D; []; 
+
+  /** Lista de Pokémons en la pagina en la que estemos. */
+  paginatedPokemons: any[] &#x3D; [];
+
+  /** Si seleccionamos un Pokémon mostraremos más detalles de dicho Pokémon seleccionado. */
+  selectedPokemon: any &#x3D; null;
+
+  /** Término de búsqueda introducido por el usuario. */
+  searchTerm: string &#x3D; &#x27;&#x27;;
+
+  /** Número de Pokémons que se mostrarán por página. */
+  itemsPerPage: number &#x3D; 50; 
+  
+  /** Página actual en la que nos encontramos. */
+  currentPage: number &#x3D; 0;    
+
+   /**
+   * Inyectamos el servicio.
+   * @param service Servicio para obtener datos de Pokémons.
+   */
+
+  constructor(private service: ServiceService) {} 
+
+
+  /**
+   * Método de inicialización del componente.
+   * Se ejecuta cuando el componente es cargado.
+   */
+
+  ngOnInit(): void {
+    this.loadPokemons();
+  }
+
+
+  /**
+   * Carga la lista de Pokémons desde el servicio.
+   */
+
+  loadPokemons(): void {
+    this.service.getPokemons(1000).subscribe((response: any) &#x3D;&gt; {
+      this.pokemons &#x3D; response.results.map((pokemon: any, index: number) &#x3D;&gt; ({
+        name: pokemon.name,
+        image: &#x60;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png&#x60;
+      }));
+      this.filteredPokemons &#x3D; [...this.pokemons];
+      this.updatePagination(); 
+    })
+  }
+
+   /**
+   * Filtra la lista de Pokémons según el término de búsqueda.
+   */
+
+  filterPokemons(): void {
+    const term &#x3D; this.searchTerm.toLowerCase();
+    if (term.length &gt; 0) {
+      this.filteredPokemons &#x3D; this.pokemons.filter(pokemon &#x3D;&gt; pokemon.name.includes(term));
+    } else {
+      this.filteredPokemons &#x3D; [...this.pokemons];
+    }
+    this.currentPage &#x3D; 0; 
+    this.updatePagination();
+  }
+
+   /**
+   * Actualiza la lista paginada de Pokémons.
+   */
+  updatePagination(): void {
+    const startIndex &#x3D; this.currentPage * this.itemsPerPage;
+    this.paginatedPokemons &#x3D; this.filteredPokemons.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+    /**
+    * Muestra la página anterior de Pokémons.
+    */
+  previousPage(): void {
+    if (this.currentPage &gt; 0) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+    /**
+    * Muestra la página siguiente de Pokémons.
+    */
+  nextPage(): void {
+    if (this.hasMorePokemons()) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  /**
+   * Verifica si hay más Pokémons disponibles para paginar.
+   * @returns &#x60;true&#x60; si hay más Pokémons, &#x60;false&#x60; en caso contrario.
+   */
+  hasMorePokemons(): boolean {
+    return (this.currentPage + 1) * this.itemsPerPage &lt; this.filteredPokemons.length;
+  }
+
+    /**
+    * Obtiene los detalles de un Pokémon seleccionado.
+    * @param name Nombre del Pokémon seleccionado.
+    */
+  selectPokemon(name: string): void {
+    this.service.getPokemonDetails(name).subscribe((response: any) &#x3D;&gt; {
+      this.selectedPokemon &#x3D; response;
+    });
+  }
+
+    /**
+    * Deselecciona el Pokémon actualmente seleccionado.
+    */
+  deselectPokemon(): void {
+    this.selectedPokemon &#x3D; null;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;catalogo-container&quot;&gt;
+  &lt;h1&gt;Pokédex&lt;/h1&gt;
+
+  &lt;!-- Barra de búsqueda --&gt;
+  &lt;div class&#x3D;&quot;search-bar&quot;&gt;
+    &lt;input 
+      type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Buscar Pokémon...&quot; [(ngModel)]&#x3D;&quot;searchTerm&quot; (input)&#x3D;&quot;filterPokemons()&quot; class&#x3D;&quot;search-input&quot;/&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Lista de Pokémon (nombre + imagen) --&gt;
+  &lt;ul class&#x3D;&quot;pokemon-list&quot;&gt;
+    &lt;li *ngFor&#x3D;&quot;let pokemon of paginatedPokemons&quot; (click)&#x3D;&quot;selectPokemon(pokemon.name)&quot; class&#x3D;&quot;pokemon-item&quot;&gt;
+      &lt;img [src]&#x3D;&quot;pokemon.image&quot; alt&#x3D;&quot;{{ pokemon.name }}&quot;&gt;
+      {{ pokemon.name | titlecase }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;!-- Mensaje si no hay resultados --&gt;
+  &lt;div *ngIf&#x3D;&quot;paginatedPokemons.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;no-results&quot;&gt;
+    No se encontraron Pokémon que coincidan con la búsqueda.
+  &lt;/div&gt;
+
+
+ &lt;!-- Paginación --&gt;
+&lt;div class&#x3D;&quot;pagination&quot; *ngIf&#x3D;&quot;filteredPokemons.length &gt; itemsPerPage&quot;&gt;
+  &lt;button (click)&#x3D;&quot;previousPage()&quot; [disabled]&#x3D;&quot;currentPage &lt;&#x3D; 0&quot; class&#x3D;&quot;pagination-button previous&quot;&gt;
+    &lt;span class&#x3D;&quot;button-text&quot;&gt;Anterior&lt;/span&gt;
+
+  &lt;/button&gt;
+  &lt;button (click)&#x3D;&quot;nextPage()&quot; [disabled]&#x3D;&quot;!hasMorePokemons()&quot; class&#x3D;&quot;pagination-button next&quot;&gt;
+    &lt;span class&#x3D;&quot;button-text&quot;&gt;Siguiente&lt;/span&gt;
+    
+  &lt;/button&gt;
+&lt;/div&gt;
+
+
+  &lt;!-- Botón &quot;Volver atrás&quot; cuando se ve un Pokémon seleccionado --&gt;
+  &lt;div *ngIf&#x3D;&quot;selectedPokemon&quot; class&#x3D;&quot;back-button-container&quot;&gt;
+    &lt;button (click)&#x3D;&quot;deselectPokemon()&quot; class&#x3D;&quot;back-button&quot;&gt;
+      Volver a la lista
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Detalles del Pokémon seleccionado --&gt;
+  &lt;div *ngIf&#x3D;&quot;selectedPokemon&quot; class&#x3D;&quot;pokemon-details&quot;&gt;
+    &lt;h2&gt;Detalles de {{ selectedPokemon.name | titlecase }}&lt;/h2&gt;
+    &lt;p&gt;&lt;strong&gt;ID:&lt;/strong&gt; {{ selectedPokemon.id }}&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Altura:&lt;/strong&gt; {{ selectedPokemon.height }}&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Peso:&lt;/strong&gt; {{ selectedPokemon.weight }}&lt;/p&gt;
+
+    &lt;h3&gt;Habilidades&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li *ngFor&#x3D;&quot;let ability of selectedPokemon.abilities&quot;&gt;
+        {{ ability.ability.name | titlecase }}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Estadísticas Base&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li *ngFor&#x3D;&quot;let stat of selectedPokemon.stats&quot;&gt;
+        &lt;strong&gt;{{ stat.stat.name | titlecase }}:&lt;/strong&gt; {{ stat.base_stat }}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tipo(s)&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li *ngFor&#x3D;&quot;let type of selectedPokemon.types&quot;&gt;
+        {{ type.type.name | titlecase }}
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Imagen&lt;/h3&gt;
+    &lt;img [src]&#x3D;&quot;selectedPokemon.sprites.front_default&quot; alt&#x3D;&quot;{{ selectedPokemon.name }}&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./catalogo-de-pokemons.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.catalogo-container {
+    font-family: &#x27;Arial&#x27;, sans-serif;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 35px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    border: 6px solid #ffcb00;
+}
+
+
+.catalogo-container h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    color: #5b4b8a;
+    margin-bottom: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.search-bar {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 650px;
+    padding: 15px 20px;
+    font-size: 1.3rem;
+    border: 3px solid #ffcb00;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+    border-color: #ff5722;
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.6);
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #777;
+}
+
+
+.pokemon-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.pokemon-item {
+    background: linear-gradient(135deg, #ffb74d, #ff9800);
+    padding: 20px;
+    .pokemon-item img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+        border-radius: 50%;
+        background-color: #fff;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .pokemon-item:hover img {
+        transform: scale(1.1); 
+    }
+    
+    .pokemon-details img {
+        display: block;
+        margin: 40px auto 0 auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 20px;
+        background-color: #fff;
+        padding: 15px;
+        border: 4px solid #ff8a00;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .pokemon-details img:hover {
+        transform: scale(1.15); 
+    }
+    
+    border: 3px solid #ffcb00;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f44336, #ff5722);
+    color: #fff;
+    border-color: #ff5722;
+}
+
+.pokemon-item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.pokemon-item:hover img {
+    transform: scale(1.1);
+}
+
+
+.no-results {
+    text-align: center;
+    color: #888;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+
+.pokemon-details {
+    margin-top: 40px;
+    padding: 35px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(238, 238, 238, 0.9));
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border: 6px solid #ffcb00;
+}
+
+.pokemon-details h2 {
+    font-size: 2.5rem;
+    color: #ff5722;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-details p {
+    font-size: 1.3rem;
+    margin: 8px 0;
+    color: #555;
+}
+
+.pokemon-details h3 {
+    font-size: 1.8rem;
+    color: #5b4b8a;
+    margin-top: 25px;
+    font-weight: 700;
+}
+
+.pokemon-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pokemon-details li {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+
+.pokemon-details img {
+    display: block;
+    margin: 40px auto 0 auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border: 4px solid #ff8a00;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.pokemon-details img:hover {
+    transform: rotate(15deg) scale(1.15);
+}
+
+
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination-button {
+    background: linear-gradient(135deg, #5b4b8a, #3e4095);
+    color: #fff;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 12px;
+}
+
+.pagination-button:disabled {
+    background: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff8a00, #ff5722);
+    color: #222;
+    transform: translateY(-4px);
+}
+
+.pagination-button:active:not(:disabled) {
+    transform: translateY(2px);
+}
+
+/* Botón de regreso */
+.back-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-button {
+    background: linear-gradient(135deg, #ff5722, #f44336);
+    color: #fff;
+    padding: 16px 28px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #3e4095, #5b4b8a);
+    transform: scale(1.05);
+}
+
+
+.pokeball-icon {
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle, #ff0000 50%, #fff 50%);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 12px;
+}
+
+.previous .pokeball-icon {
+    transform: rotate(180deg);
+}
+
+.next .pokeball-icon {
+    transform: rotate(0deg);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="catalogo-container">  <h1>Pokédex</h1>  <!-- Barra de búsqueda -->  <div class="search-bar">    <input       type="text" placeholder="Buscar Pokémon..." [(ngModel)]="searchTerm" (input)="filterPokemons()" class="search-input"/>  </div>  <!-- Lista de Pokémon (nombre + imagen) -->  <ul class="pokemon-list">    <li *ngFor="let pokemon of paginatedPokemons" (click)="selectPokemon(pokemon.name)" class="pokemon-item">      <img [src]="pokemon.image" alt="{{ pokemon.name }}">      {{ pokemon.name | titlecase }}    </li>  </ul>  <!-- Mensaje si no hay resultados -->  <div *ngIf="paginatedPokemons.length === 0" class="no-results">    No se encontraron Pokémon que coincidan con la búsqueda.  </div> <!-- Paginación --><div class="pagination" *ngIf="filteredPokemons.length > itemsPerPage">  <button (click)="previousPage()" [disabled]="currentPage <= 0" class="pagination-button previous">    <span class="button-text">Anterior</span>  </button>  <button (click)="nextPage()" [disabled]="!hasMorePokemons()" class="pagination-button next">    <span class="button-text">Siguiente</span>      </button></div>  <!-- Botón "Volver atrás" cuando se ve un Pokémon seleccionado -->  <div *ngIf="selectedPokemon" class="back-button-container">    <button (click)="deselectPokemon()" class="back-button">      Volver a la lista    </button>  </div>  <!-- Detalles del Pokémon seleccionado -->  <div *ngIf="selectedPokemon" class="pokemon-details">    <h2>Detalles de {{ selectedPokemon.name | titlecase }}</h2>    <p><strong>ID:</strong> {{ selectedPokemon.id }}</p>    <p><strong>Altura:</strong> {{ selectedPokemon.height }}</p>    <p><strong>Peso:</strong> {{ selectedPokemon.weight }}</p>    <h3>Habilidades</h3>    <ul>      <li *ngFor="let ability of selectedPokemon.abilities">        {{ ability.ability.name | titlecase }}      </li>    </ul>    <h3>Estadísticas Base</h3>    <ul>      <li *ngFor="let stat of selectedPokemon.stats">        <strong>{{ stat.stat.name | titlecase }}:</strong> {{ stat.base_stat }}      </li>    </ul>    <h3>Tipo(s)</h3>    <ul>      <li *ngFor="let type of selectedPokemon.types">        {{ type.type.name | titlecase }}      </li>    </ul>    <h3>Imagen</h3>    <img [src]="selectedPokemon.sprites.front_default" alt="{{ selectedPokemon.name }}">  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppFooterComponent', 'selector': 'app-app-footer'},{'name': 'AppHeaderComponent', 'selector': 'app-app-header'},{'name': 'CatalogoDePokemonsComponent', 'selector': 'app-catalogo-de-pokemons'},{'name': 'EventsComponent', 'selector': 'app-events'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NewsComponent', 'selector': 'app-news'},{'name': 'RegistrarseComponent', 'selector': 'app-registrarse'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CatalogoDePokemonsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CatalogoDePokemonsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

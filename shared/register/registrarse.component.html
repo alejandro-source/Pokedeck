@@ -3,8 +3,9 @@
     <img src="icons/logo.png" alt="Pokemon logo" class="logo">
     <h2>Regístrate en el Club de Entrenadores</h2>
 
-    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()"> <!-- Conecta el formulario HTML con el TS -->
-      
+    <!-- Formulario de registro vinculado al formulario reactivo en TypeScript -->
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()"> 
+      <!-- Nombre -->
       <label for="nombre">Nombre:</label>
       <input id="nombre" type="text" formControlName="nombre" placeholder="Ash Ketchum" />
       <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">

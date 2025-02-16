@@ -1,5 +1,6 @@
 <header class="header">
   <div class="header-container">
+    
     <!-- Banner -->
     <div class="banner">
       <img src="icons/LogoCharizard.png" alt="Banner Pokémon">
@@ -37,13 +38,7 @@
 
     <!-- Menú de usuario (Solo si está autenticado) -->
     <div *ngIf="isAuthenticated()" class="user-menu">
-      <img 
-      [ngClass]="{'logged-in': isAuthenticated()}"
-      src="{{ userData?.avatar || 'icons/Avatar.png' }}" 
-      alt="Usuario"
-      class="user-avatar"
-      (click)="toggleUserMenu()" 
-    />
+      <img [ngClass]="{'logged-in': isAuthenticated()}" src="{{ userData?.avatar || 'icons/Avatar.png' }}" alt="Usuario" class="user-avatar" (click)="toggleUserMenu()"/>
     
       <div *ngIf="userMenuVisible" class="dropdown-menu">
         <!-- Muestra el nombre del usuario y el botón de cerrar sesión -->

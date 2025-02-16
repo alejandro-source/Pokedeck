@@ -1,4 +1,3 @@
-/* Fuentes inspiradas en un estilo más juguetón */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
@@ -9,21 +8,20 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f1f1f1;  /* Fondo claro para no ser muy oscuro */
+  background-color: #f1f1f1;  
   color: #333;
   line-height: 1.6;
 }
 
-/* Estilo para el header */
+
 .header {
-  background-color: #ffcb05;  /* Color amarillo Pokémon */
-  border-bottom: 2px solid #ff6f00;  /* Borde naranja oscuro */
+  background-color: #ffcb05;  
+  border-bottom: 2px solid #ff6f00;  
   padding: 20px 0;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenedor principal del header */
-/* Contenedor principal del header */
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -32,12 +30,11 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  flex-shrink: 0; /* Evita que el header se reduzca */
+  flex-shrink: 0; 
 }
 
 
 
-/* Banner dentro del header */
 .banner img {
   width: 130px;
   height: auto;
@@ -45,7 +42,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Logo */
+
 .logo {
   flex-grow: 1;
   display: flex;
@@ -63,24 +60,24 @@ body {
   filter: brightness(1.2);
 }
 
-/* Estilos del menú de navegación */
+
 .nav-menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff6f00;  /* Naranja Pokémon para que combine con el tema */
+  background-color: #ff6f00;  
   border-radius: 25px;
   padding: 8px 20px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra para darle más profundidad */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
   transition: background-color 0.3s ease;
 }
 
-/* Efecto de degradado para la barra de navegación */
+
 .nav-menu {
-  background: linear-gradient(90deg, #ffcb05 0%, #ff6f00 100%);  /* Degradado de amarillo a naranja */
+  background: linear-gradient(90deg, #ffcb05 0%, #ff6f00 100%);  
 }
 
-/* Estilo para los enlaces de navegación */
+
 .nav-menu ul {
   list-style: none;
   display: flex;
@@ -96,7 +93,7 @@ body {
 
 .nav-menu a {
   text-decoration: none;
-  color: #fff;  /* Color blanco para que resalten sobre el fondo */
+  color: #fff;  
   font-size: 16px;
   font-weight: 600;
   display: flex;
@@ -108,14 +105,14 @@ body {
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Efecto al pasar el ratón (hover) */
+
 .nav-menu a:hover {
-  color: #ff6f00;  /* Color del texto cambia a naranja */
-  background-color: #fff;  /* Fondo blanco para un buen contraste */
+  color: #ff6f00;  
+  background-color: #fff;  
   transform: translateY(-5px);
 }
 
-/* Iconos de la barra de navegación */
+
 .nav-menu img {
   width: 50px;
   height: 50px;
@@ -128,7 +125,7 @@ body {
   transform: scale(1.2);
 }
 
-/* Responsividad para dispositivos más pequeños */
+
 @media (max-width: 768px) {
   .banner img {
     width: 100px;
@@ -152,7 +149,7 @@ body {
   }
 }
 
-/* Mejorar experiencia en dispositivos móviles */
+
 @media (max-width: 480px) {
   .nav-menu ul {
     gap: 20px;
@@ -176,14 +173,13 @@ body {
   }
 }
 
-/* Foco visual accesible */
 .nav-menu a:focus,
 .nav-menu img:focus {
   outline: 3px solid #ff6f00;
   outline-offset: 2px;
 }
 
-/* Estilo para el menú del avatar de usuario */
+
 .user-menu {
   position: relative;
   display: flex;
@@ -202,13 +198,12 @@ body {
   transition: transform 0.3s ease, box-shadow 0.2s ease, border 0.3s ease;
 }
 
-/* Avatar de usuario con borde remarcado cuando está logueado */
+
 .user-avatar.logged-in {
-  border: 2px solid #ff6f00;  /* Borde naranja para cuando el usuario está logueado */
-  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.4); /* Sombra suave en naranja */
+  border: 2px solid #ff6f00;  
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.4); 
 }
 
-/* Opciones del menú de usuario */
 .user-options {
   position: absolute;
   top: 50px;
@@ -245,7 +240,7 @@ body {
   color: #ff6f00;
 }
 
-/* Estilo adicional para el dropdown del menú */
+
 .dropdown-menu {
   position: absolute;
   top: 50px;

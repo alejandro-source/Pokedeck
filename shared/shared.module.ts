@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { RegistrarseComponent } from './register/registrarse.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { Error404Component } from './error-404/error-404.component';
 
 
 
@@ -17,7 +16,6 @@ import { Error404Component } from './error-404/error-404.component';
     AppFooterComponent,
     RegistrarseComponent,
     LoginComponent,
-    Error404Component,
     
 
   ],

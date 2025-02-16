@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
+/**
+ * @component HomeComponent
+ * @description Componente que representa la página de inicio.
+ * Muestra una lista de noticias relacionadas con Pokémon.
+ */
 
 @Component({
   selector: 'app-home',
@@ -8,42 +12,30 @@ import { Observable } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
+
 export class HomeComponent  {
 
-    constructor(private http: HttpClient) {}
-
-    ngOnInit(): void {
-      this.getUsuarios().subscribe((usuarios) => {
-        console.log(usuarios);
-      });
-    }
-
-    getUsuarios(): Observable<any> {
-      return this.http.get('http://localhost:8080/api/usuarios');
-    }
-
-    
-  noticias = [
-    {
-      titulo: "Evoluciones Prismáticas",
-      descripcion: "Descubre un nuevo nivel de asombro con las Evoluciones Prismáticas...",
-      imagen: "icons/eventos.png"
-    },
-    {
-      titulo: "Evento de Pikachu Fest",
-      descripcion: "¡Pikachu Fest llega con eventos y nuevas cartas exclusivas!",
-      imagen: "icons/eventos.png"
-    },
-    {
-      titulo: "Nueva expansión Pokémon",
-      descripcion: "La nueva expansión de cartas traerá Pokémon legendarios...",
-      imagen: "icons/eventos.png"
-    }
-  ];
-
-  verNoticia(noticia: any) {
-    alert("Mostrando noticia: " + noticia.titulo);
-  }
-
+    /**
+    * @property {Array<Object>} noticias
+    * @description Lista de noticias que se mostrarán en la página de inicio.
+    * Cada noticia contiene su título, descripción e imagen de dicha noticia.
+    */
+    noticias = [
+      {
+          "titulo": "Evoluciones Prismáticas",
+          "descripcion": "Descubre un nuevo nivel de asombro con las Evoluciones Prismáticas. ¡Los Pokémon alcanzan una nueva forma con habilidades extraordinarias y colores vibrantes en esta actualización especial!",
+          "imagen": "icons/Home1.jpg"
+      },
+      {
+          "titulo": "Evento de Pikachu Fest",
+          "descripcion": "¡Pikachu Fest llega con eventos y nuevas cartas exclusivas! Participa en el evento y consigue Pikachu en su forma especial, además de cartas que podrás añadir a tu colección.",
+          "imagen": "icons/Home2.jpg"
+      },
+      {
+          "titulo": "Nueva expansión Pokémon",
+          "descripcion": "La nueva expansión de cartas traerá Pokémon legendarios, con cartas llenas de poder y nuevas mecánicas de juego. ¡Prepara tu mazo para las batallas más épicas!",
+          "imagen": "icons/Home3.png"
+      }
+  ]
   
 }

@@ -4,21 +4,12 @@
   <!-- Barra de búsqueda -->
   <div class="search-bar">
     <input 
-      type="text"   
-      placeholder="Buscar Pokémon..." 
-      [(ngModel)]="searchTerm" 
-      (input)="filterPokemons()" 
-      class="search-input"
-    />
+      type="text" placeholder="Buscar Pokémon..." [(ngModel)]="searchTerm" (input)="filterPokemons()" class="search-input"/>
   </div>
 
   <!-- Lista de Pokémon (nombre + imagen) -->
   <ul class="pokemon-list">
-    <li 
-      *ngFor="let pokemon of paginatedPokemons" 
-      (click)="selectPokemon(pokemon.name)" 
-      class="pokemon-item"
-    >
+    <li *ngFor="let pokemon of paginatedPokemons" (click)="selectPokemon(pokemon.name)" class="pokemon-item">
       <img [src]="pokemon.image" alt="{{ pokemon.name }}">
       {{ pokemon.name | titlecase }}
     </li>
@@ -82,5 +73,4 @@
     <img [src]="selectedPokemon.sprites.front_default" alt="{{ selectedPokemon.name }}">
   </div>
 </div>
-
 

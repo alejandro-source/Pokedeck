@@ -1,1 +1,28 @@
-<p>events works!</p>
+
+<!-- Eventos de Pokemon, aqui lo que hacemos es recorrer la lista de eventos de mi lista usando ngFor y muestra la imagen,titulo,descripcion,fecha y boton y un botón para ver mas de dicha noticia -->
+<div class="events-container">
+    <h1>Eventos de Pokémon</h1>
+    <div *ngFor="let event of eventsList" class="event-item">
+      <img [src]="event.imageUrl" alt="{{ event.title }}" class="event-image">
+      <div class="event-content">
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.description }}</p>
+        <small>{{ event.date }}</small>
+        <div class="button-container">
+        <button (click)="selectEvent(event)">Ver más</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Si seleccionamos algun evento,pues hacemos un ngIF que sirve para ponernos la condicion una vez que seleccionemos ese eventos y que nos muestre el titulo la imagen de ese evento seleccionado
+         información más detallada del evento y por úlltimo,la fecha -->
+    <div *ngIf="selectedEvent" class="event-modal">
+      <div class="event-modal-content">
+        <span class="close" (click)="closeEvent()">&times;</span>
+        <h2>{{ selectedEvent.title }}</h2>
+        <img [src]="selectedEvent.imageUrl" alt="{{ selectedEvent.title }}" class="event-modal-image">
+        <p>{{ selectedEvent.detailedContent }}</p>
+        <small>{{ selectedEvent.date }}</small>
+      </div>
+    </div>
+  </div>

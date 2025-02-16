@@ -1,1 +1,29 @@
-<p>news works!</p>
+<!-- Noticias de Pokemon, aqui lo que hacemos es recorrer la lista de noticias de mi lista usando ngFor y muestra la imagen,titulo,descripcion,fecha y boton y un botón para ver mas de dicha noticia -->
+
+<div class="news-container">
+    <h1>Noticias de Pokémon</h1>
+    <div *ngFor="let news of newsList" class="news-item">
+      <img [src]="news.imageUrl" alt="{{ news.title }}" class="news-image">
+      <div class="news-content">
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.content }}</p>
+        <small>{{ news.date }}</small>
+        <div class="button-container">
+          <button (click)="selectNews(news)">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+   <!-- Si seleccionamos alguna noticias ,pues hacemos un ngIF que sirve para ponernos la condicion una vez que seleccionemos esa noticia y que nos muestre el titulo la imagen de ese evento seleccionado
+         información más detallada de la noticia y por úlltimo,la fecha -->
+         
+  <div *ngIf="selectedNews" class="news-modal">
+      <div class="news-modal-content">
+        <span class="close" (click)="closeNews()">&times;</span>
+        <h2>{{ selectedNews.title }}</h2>
+        <img [src]="selectedNews.imageUrl" alt="{{ selectedNews.title }}" class="news-modal-image">
+        <p>{{ selectedNews.detailedContent }}</p>
+        <small>{{ selectedNews.date }}</small>
+      </div>
+    </div>
+  </div>

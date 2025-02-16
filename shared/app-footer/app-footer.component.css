@@ -1,84 +1,81 @@
-/* Estilo para el footer */
 .footer-container {
   width: 97.3%;
-  background-color: #ffdb00; /* Fondo amarillo tipo Pokémon */
+  background-color: #ffdb00; 
   padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  border-top: 4px solid #ff6f00; /* Línea naranja en la parte superior */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  border-top: 4px solid #ff6f00; 
 }
 
-/* Contenedor del contenido del footer */
+
 .footer-content {
   text-align: center;
-  max-width: 800px; /* Ancho máximo */
+  max-width: 800px; 
   width: 100%;
 }
 
-/* Texto del footer */
 .footer-text {
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
-  text-transform: uppercase; /* Convertir texto a mayúsculas */
+  text-transform: uppercase;
 }
 
-/* Contenedor de los botones */
+
 .footer-buttons {
   display: flex;
-  gap: 20px; /* Espaciado entre botones */
+  gap: 20px; 
   justify-content: center;
 }
 
-/* Estilo base para los botones */
+
 .footer-buttons button {
   padding: 14px 30px;
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 25px; /* Bordes redondeados */
+  border-radius: 25px; 
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Botón de registro */
+
 .footer-buttons button:first-child {
-  background-color: #ff6f00; /* Naranja vibrante */
+  background-color: #ff6f00; 
   color: white;
 }
 
 .footer-buttons button:first-child:hover {
-  background-color: #ff9100; /* Naranja más oscuro */
-  transform: scale(1.05); /* Efecto de elevación */
+  background-color: #ff9100; 
+  transform: scale(1.05); 
 }
 
 .footer-buttons button:first-child:focus {
-  outline: 3px solid #ff6f00; /* Resaltar el foco */
+  outline: 3px solid #ff6f00; 
 }
 
-/* Botón de inicio de sesión */
+
 .footer-buttons button:last-child {
-  background-color: #007bff; /* Azul fuerte */
+  background-color: #007bff; 
   color: white;
 }
 
 .footer-buttons button:last-child:hover {
-  background-color: #0056b3; /* Azul más oscuro */
+  background-color: #0056b3; 
   transform: scale(1.05);
 }
 
 .footer-buttons button:last-child:focus {
-  outline: 3px solid #007bff; /* Resaltar el foco */
+  outline: 3px solid #007bff; 
 }
 
-/* Responsividad para tablets */
 @media (max-width: 768px) {
   .footer-text {
     font-size: 1.1rem;
@@ -95,7 +92,6 @@
   }
 }
 
-/* Responsividad para móviles */
 @media (max-width: 480px) {
   .footer-text {
     font-size: 1rem;

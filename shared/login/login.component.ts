@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+/**
+ * Componente de inicio de sesión de la aplicación.
+ * Este componente permite a los usuarios autenticarse mediante su correo electrónico y contraseña.
+ */
+
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -10,20 +15,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+   
+  /**
+   * Formulario reactivo para el inicio de sesión.
+   * Contiene los campos 'email' y 'password' con validaciones.
+   */
+
   loginForm: FormGroup;
-  loginError: string = '';
+
+   /**
+   * Mensaje de error que se muestra si las credenciales son incorrectas.
+   */
+
+   loginError: string = '';
+
+    /**
+   * Constructor del componente.
+   * Inicializa el formulario de inicio de sesión con validaciones.
+   * @param fb Instancia del servicio FormBuilder para construir el formulario.
+   * @param http Instancia del servicio HttpClient para hacer solicitudes HTTP.
+   * @param router Instancia del servicio Router para navegar entre rutas.
+   */
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
-  ) {
-    // Inicializar el formulario
+    private router: Router ){
+    
+      // Inicializar el formulario con los campos email y password
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      email: ['', [Validators.required, Validators.email]], // Valida que sea un correo electrónico válido
+      password: ['', [Validators.required, Validators.minLength(8)]] // Valida que la contraseña tenga al menos 8 caracteres
     });
   }
+
+
+  /**
+   * Maneja el envío del formulario de inicio de sesión.
+   * Realiza una solicitud HTTP POST al backend para autenticar al usuario.
+   * Si la autenticación es exitosa, guarda el token en el localStorage y redirige a la página de inicio.
+   * Si hay un error, muestra un mensaje de error.
+   */
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -35,11 +67,11 @@ export class LoginComponent {
           response => {
             // Guardar el token en el localStorage
             localStorage.setItem('token', response.token);
-            // Redirigir a la página de inicio (dashboard)
+            // Redirigir a la página de inicio
             this.router.navigate(['/dashboard']);
           },
           error => {
-            // Mostrar error en caso de credenciales incorrectas
+            // Muestra un mensaje de error en caso de credenciales incorrectas
             this.loginError = 'Credenciales incorrectas. Inténtelo de nuevo.';
           }
         );

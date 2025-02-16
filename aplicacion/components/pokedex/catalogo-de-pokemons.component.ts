@@ -1,29 +1,64 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../..//services/pokemon.service'; 
 
+/**
+ * Componente para mostrar el catálogo de Pokémons.
+ * Permite la búsqueda, paginación y podemos ver los detalles de un Pokémon seleccionado.
+ */
+
 @Component({
   selector: 'app-catalogo-de-pokemons',
   standalone: false,
   templateUrl: './catalogo-de-pokemons.component.html',
   styleUrls: ['./catalogo-de-pokemons.component.css']
 })
+
+
 export class CatalogoDePokemonsComponent implements OnInit {
+
+  /** Lista de todos los Pokémons obtenidos de la API. */
   pokemons: any[] = []; 
+
+  /** Lista filtrada de Pokémons según la búsqueda del usuario. */
   filteredPokemons: any[] = []; 
-  paginatedPokemons: any[] = []; 
+
+  /** Lista de Pokémons en la pagina en la que estemos. */
+  paginatedPokemons: any[] = [];
+
+  /** Si seleccionamos un Pokémon mostraremos más detalles de dicho Pokémon seleccionado. */
   selectedPokemon: any = null;
+
+  /** Término de búsqueda introducido por el usuario. */
   searchTerm: string = '';
 
+  /** Número de Pokémons que se mostrarán por página. */
   itemsPerPage: number = 50; 
+  
+  /** Página actual en la que nos encontramos. */
   currentPage: number = 0;    
 
+   /**
+   * Inyectamos el servicio.
+   * @param service Servicio para obtener datos de Pokémons.
+   */
+
   constructor(private service: ServiceService) {} 
+
+
+  /**
+   * Método de inicialización del componente.
+   * Se ejecuta cuando el componente es cargado.
+   */
 
   ngOnInit(): void {
     this.loadPokemons();
   }
 
-  // Cargar los Pokémon usando el servicio
+
+  /**
+   * Carga la lista de Pokémons desde el servicio.
+   */
+
   loadPokemons(): void {
     this.service.getPokemons(1000).subscribe((response: any) => {
       this.pokemons = response.results.map((pokemon: any, index: number) => ({
@@ -35,7 +70,10 @@ export class CatalogoDePokemonsComponent implements OnInit {
     })
   }
 
-  // Filtrar los Pokémon por el término de búsqueda
+   /**
+   * Filtra la lista de Pokémons según el término de búsqueda.
+   */
+
   filterPokemons(): void {
     const term = this.searchTerm.toLowerCase();
     if (term.length > 0) {
@@ -47,13 +85,17 @@ export class CatalogoDePokemonsComponent implements OnInit {
     this.updatePagination();
   }
 
-  // Actualizar la lista de Pokémon para la página actual
+   /**
+   * Actualiza la lista paginada de Pokémons.
+   */
   updatePagination(): void {
     const startIndex = this.currentPage * this.itemsPerPage;
     this.paginatedPokemons = this.filteredPokemons.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  // Ir a la página anterior
+    /**
+    * Muestra la página anterior de Pokémons.
+    */
   previousPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -61,7 +103,9 @@ export class CatalogoDePokemonsComponent implements OnInit {
     }
   }
 
-  // Ir a la siguiente página
+    /**
+    * Muestra la página siguiente de Pokémons.
+    */
   nextPage(): void {
     if (this.hasMorePokemons()) {
       this.currentPage++;
@@ -69,19 +113,27 @@ export class CatalogoDePokemonsComponent implements OnInit {
     }
   }
 
-  // Verificar si hay más Pokémon para mostrar
+  /**
+   * Verifica si hay más Pokémons disponibles para paginar.
+   * @returns `true` si hay más Pokémons, `false` en caso contrario.
+   */
   hasMorePokemons(): boolean {
     return (this.currentPage + 1) * this.itemsPerPage < this.filteredPokemons.length;
   }
 
-  // Seleccionar un Pokémon y mostrar sus detalles
+    /**
+    * Obtiene los detalles de un Pokémon seleccionado.
+    * @param name Nombre del Pokémon seleccionado.
+    */
   selectPokemon(name: string): void {
     this.service.getPokemonDetails(name).subscribe((response: any) => {
       this.selectedPokemon = response;
     });
   }
 
-  // Desmarcar el Pokémon seleccionado y volver a la lista
+    /**
+    * Deselecciona el Pokémon actualmente seleccionado.
+    */
   deselectPokemon(): void {
     this.selectedPokemon = null;
   }

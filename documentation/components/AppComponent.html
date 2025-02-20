@@ -262,11 +262,11 @@ export class AppComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;!-- app.component.html --&gt;
-&lt;app-app-header&gt;&lt;/app-app-header&gt; &lt;!-- Encabezado común --&gt;
+&lt;app-app-header&gt;&lt;/app-app-header&gt; 
 &lt;main&gt;
-  &lt;router-outlet&gt;&lt;/router-outlet&gt;  &lt;!-- Aquí se cargan los componentes según la ruta --&gt;
+  &lt;router-outlet&gt;&lt;/router-outlet&gt;  
 &lt;/main&gt;
-&lt;app-app-footer&gt;&lt;/app-app-footer&gt; &lt;!-- Pie de página común --&gt;
+&lt;app-app-footer&gt;&lt;/app-app-footer&gt; 
 </code></pre>
     </div>
 
@@ -296,7 +296,7 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- app.component.html --><app-app-header></app-app-header> <!-- Encabezado común --><main>  <router-outlet></router-outlet>  <!-- Aquí se cargan los componentes según la ruta --></main><app-app-footer></app-app-footer> <!-- Pie de página común --></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- app.component.html --><app-app-header></app-app-header> <main>  <router-outlet></router-outlet>  </main><app-app-footer></app-app-footer> </div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppFooterComponent', 'selector': 'app-app-footer'},{'name': 'AppHeaderComponent', 'selector': 'app-app-header'},{'name': 'CatalogoDePokemonsComponent', 'selector': 'app-catalogo-de-pokemons'},{'name': 'EventsComponent', 'selector': 'app-events'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NewsComponent', 'selector': 'app-news'},{'name': 'RegistrarseComponent', 'selector': 'app-registrarse'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};

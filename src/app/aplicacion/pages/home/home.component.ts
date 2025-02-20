@@ -1,41 +1,52 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from './../../services/pokemon.service'; // Asegúrate de importar tu servicio correctamente
 
 /**
  * @component HomeComponent
  * @description Componente que representa la página de inicio.
- * Muestra una lista de noticias relacionadas con Pokémon.
+ * Muestra una lista de noticias relacionadas con Pokémon obtenidas del backend.
  */
-
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
+export class HomeComponent implements OnInit {
 
-export class HomeComponent  {
+  /**
+   * @property {Array<Object>} noticias
+   * @description Lista de noticias que se mostrarán en la página de inicio.
+   * Se cargan dinámicamente desde el backend.
+   */
+  noticias: any[] = [];
 
-    /**
-    * @property {Array<Object>} noticias
-    * @description Lista de noticias que se mostrarán en la página de inicio.
-    * Cada noticia contiene su título, descripción e imagen de dicha noticia.
-    */
-    noticias = [
-      {
-          "titulo": "Evoluciones Prismáticas",
-          "descripcion": "Descubre un nuevo nivel de asombro con las Evoluciones Prismáticas. ¡Los Pokémon alcanzan una nueva forma con habilidades extraordinarias y colores vibrantes en esta actualización especial!",
-          "imagen": "icons/Home1.jpg"
+  /**
+   * Constructor del componente.
+   * @param serviceService Servicio para obtener las noticias desde el backend.
+   */
+  constructor(private serviceService: ServiceService) {}
+
+  /**
+   * Método de ciclo de vida que se ejecuta al inicializar el componente.
+   * Carga las noticias desde el backend.
+   */
+  ngOnInit(): void {
+    this.cargarNoticias();
+  }
+
+  /**
+   * Carga las noticias desde el backend y las asigna a la propiedad 'noticias'.
+   */
+  cargarNoticias(): void {
+    this.serviceService.getNoticias().subscribe(
+      (data) => {
+        this.noticias = data;
+        console.log('Noticias cargadas:', this.noticias);
       },
-      {
-          "titulo": "Evento de Pikachu Fest",
-          "descripcion": "¡Pikachu Fest llega con eventos y nuevas cartas exclusivas! Participa en el evento y consigue Pikachu en su forma especial, además de cartas que podrás añadir a tu colección.",
-          "imagen": "icons/Home2.jpg"
-      },
-      {
-          "titulo": "Nueva expansión Pokémon",
-          "descripcion": "La nueva expansión de cartas traerá Pokémon legendarios, con cartas llenas de poder y nuevas mecánicas de juego. ¡Prepara tu mazo para las batallas más épicas!",
-          "imagen": "icons/Home3.png"
+      (error) => {
+        console.error('Error al cargar noticias:', error);
       }
-  ]
-  
+    );
+  }
 }

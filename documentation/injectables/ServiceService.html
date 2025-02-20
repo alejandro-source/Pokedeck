@@ -163,6 +163,9 @@ Proporciona métodos para obtener información de la Api de Pokémon y registrar
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#getNoticias" >getNoticias</a>
+                            </li>
+                            <li>
                                 <a href="#getPokemonDetails" >getPokemonDetails</a>
                             </li>
                             <li>
@@ -245,6 +248,49 @@ Proporciona métodos para obtener información de la Api de Pokémon y registrar
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getNoticias"></a>
+                    <span class="name">
+                        <span ><b>getNoticias</b></span>
+                        <a href="#getNoticias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNoticias()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/aplicacion/services/pokemon.service.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la lista de noticias desde el backend.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un observable con la lista de noticias.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getPokemonDetails"></a>
                     <span class="name">
                         <span ><b>getPokemonDetails</b></span>
@@ -261,8 +307,8 @@ Proporciona métodos para obtener información de la Api de Pokémon y registrar
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/aplicacion/services/pokemon.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/aplicacion/services/pokemon.service.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -336,8 +382,8 @@ Proporciona métodos para obtener información de la Api de Pokémon y registrar
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/aplicacion/services/pokemon.service.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/aplicacion/services/pokemon.service.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -440,7 +486,7 @@ Proporciona métodos para obtener información de la Api de Pokémon y registrar
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:3000/aphi/datos&#x27;</code>
+                        <i>Default value : </i><code>&#x27;https://backend-pokedeck-email.onrender.com/api&#x27;</code>
                     </td>
                 </tr>
                     <tr>
@@ -507,7 +553,7 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 import { PokeAPI } from &#x27;../../interfaces/pokemon.interfaces&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
   
- /**
+/**
  * Servicio para interactuar con la API de Pokémon y mi backend en Node.js.
  * Proporciona métodos para obtener información de la Api de Pokémon y registrar usuarios en una base de datos MySQL.
  */
@@ -521,7 +567,7 @@ export class ServiceService {
   private urlEndPoint: string &#x3D; &#x27;https://pokeapi.co/api/v2/pokemon/&#x27;;
 
   /** URL del backend en Node.js */
-  private apiUrl &#x3D; &#x27;http://localhost:3000/aphi/datos&#x27;; 
+  private apiUrl &#x3D; &#x27;https://backend-pokedeck-email.onrender.com/api&#x27;; 
 
    /**
    * Constructor del servicio.
@@ -529,18 +575,17 @@ export class ServiceService {
    */
   constructor(private http: HttpClient) {}
 
-    /**
+  /**
    * Obtiene una lista de Pokémon desde la API.
    * @param limit Número máximo de Pokémon a obtener.
    * @param offset Número de Pokémon a omitir desde el inicio.
    * @returns Un observable con la lista de Pokémon.
    */
-  
   getPokemons(limit: number &#x3D; 1000, offset: number &#x3D; 0): Observable&lt;PokeAPI&gt; {
     return this.http.get&lt;PokeAPI&gt;(&#x60;${this.urlEndPoint}?limit&#x3D;${limit}&amp;offset&#x3D;${offset}&#x60;);
   }
 
-   /**
+  /**
    * Obtiene los detalles de un Pokémon específico.
    * @param name Nombre del Pokémon a obtener.
    * @returns Un observable con los detalles del Pokémon.
@@ -549,6 +594,13 @@ export class ServiceService {
     return this.http.get&lt;any&gt;(&#x60;${this.urlEndPoint}${name}&#x60;);
   }
 
+  /**
+   * Obtiene la lista de noticias desde el backend.
+   * @returns Un observable con la lista de noticias.
+   */
+  getNoticias(): Observable&lt;any&gt; {
+    return this.http.get&lt;any&gt;(&#x60;${this.apiUrl}/noticias&#x60;);
+  }
 }
 </code></pre>
     </div>

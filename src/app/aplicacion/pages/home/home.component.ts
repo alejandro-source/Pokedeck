@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
   constructor(private serviceService: ServiceService) {}
 
   /**
-   * Método de ciclo de vida que se ejecuta al inicializar el componente.
    * Carga las noticias desde el backend.
    */
   ngOnInit(): void {
